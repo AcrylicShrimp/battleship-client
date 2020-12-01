@@ -38,6 +38,27 @@ public class PacketHandler {
             case PacketType.NOTIFY_ROOM:
                 handler.handle(new Packet.NotifyRoom(buffer));
                 break;
+            case PacketType.NOTIFY_GAME_INIT:
+                handler.handle(new Packet.NotifyGameInit(buffer));
+                break;
+            case PacketType.NOTIFY_GAME_BEGIN:
+                handler.handle(new Packet.NotifyGameBegin());
+                break;
+            case PacketType.NOTIFY_GAME_TURN:
+                handler.handle(new Packet.NotifyGameTurn(buffer));
+                break;
+            case PacketType.NOTIFY_GAME_FIRE_FRIENDLY:
+                handler.handle(new Packet.NotifyGameFireFriendly(buffer));
+                break;
+            case PacketType.NOTIFY_GAME_FIRE_ENEMY:
+                handler.handle(new Packet.NotifyGameFireEnemy(buffer));
+                break;
+            case PacketType.NOTIFY_GAME_FIRE_REJECTED:
+                handler.handle(new Packet.NotifyGameFireRejected());
+                break;
+            case PacketType.NOTIFY_GAME_SET:
+                handler.handle(new Packet.NotifyGameSet(buffer));
+                break;
             case PacketType.BROADCAST_CHAT_NORMAL:
                 handler.handle(new Packet.BroadcastChatNormal(buffer));
                 break;
@@ -96,6 +117,34 @@ public class PacketHandler {
     }
 
     public void handle(Packet.NotifyRoom packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameInit packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameBegin packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameTurn packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameFireFriendly packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameFireEnemy packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameFireRejected packet) {
+        // Do nothing.
+    }
+
+    public void handle(Packet.NotifyGameSet packet) {
         // Do nothing.
     }
 

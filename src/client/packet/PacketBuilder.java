@@ -70,6 +70,30 @@ public interface PacketBuilder {
         return build(20104, pack(roomName));
     }
 
+    static ByteBuffer buildRequestStartGame() {
+        return build(20105);
+    }
+
+    static ByteBuffer buildGameInit(Ship[] ships) {
+        return build(90001,
+                     pack(ships[0].x),
+                     pack(ships[0].y),
+                     pack(ships[0].rotated ? 1 : 0),
+                     pack(ships[1].x),
+                     pack(ships[1].y),
+                     pack(ships[1].rotated ? 1 : 0),
+                     pack(ships[2].x),
+                     pack(ships[2].y),
+                     pack(ships[2].rotated ? 1 : 0),
+                     pack(ships[3].x),
+                     pack(ships[3].y),
+                     pack(ships[3].rotated ? 1 : 0));
+    }
+
+    static ByteBuffer buildGameFire(int x, int y) {
+        return build(90002, pack(x), pack(y));
+    }
+
     static ByteBuffer buildChatNormal(String message) {
         return build(40001, pack(message));
     }
@@ -81,4 +105,16 @@ public interface PacketBuilder {
     int size();
 
     void put(ByteBuffer buffer);
+
+    class Ship {
+        public final int x;
+        public final int y;
+        public final boolean rotated;
+
+        public Ship(int x, int y, boolean rotated) {
+            this.x = x;
+            this.y = y;
+            this.rotated = rotated;
+        }
+    }
 }

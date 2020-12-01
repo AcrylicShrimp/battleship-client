@@ -3,7 +3,6 @@ package client.packet;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Packet {
     public static class ServerHello {
@@ -115,8 +114,10 @@ public class Packet {
 
             @Override
             public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
+                if (this == o)
+                    return true;
+                if (o == null || getClass() != o.getClass())
+                    return false;
                 Client client = (Client) o;
                 return clientId == client.clientId;
             }
@@ -143,8 +144,10 @@ public class Packet {
 
             @Override
             public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
+                if (this == o)
+                    return true;
+                if (o == null || getClass() != o.getClass())
+                    return false;
                 Room room = (Room) o;
                 return roomId == room.roomId;
             }
@@ -186,8 +189,10 @@ public class Packet {
 
             @Override
             public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
+                if (this == o)
+                    return true;
+                if (o == null || getClass() != o.getClass())
+                    return false;
                 Client client = (Client) o;
                 return clientId == client.clientId;
             }
@@ -201,6 +206,60 @@ public class Packet {
             public String toString() {
                 return this.clientName;
             }
+        }
+    }
+
+    public static class NotifyGameInit {
+        public final boolean isBlue;
+
+        public NotifyGameInit(ByteBuffer buffer) {
+            this.isBlue = PacketReader.integer(buffer) != 0;
+        }
+    }
+
+    public static class NotifyGameBegin {
+    }
+
+    public static class NotifyGameTurn {
+        public final boolean isMyTurn;
+
+        public NotifyGameTurn(ByteBuffer buffer) {
+            this.isMyTurn = PacketReader.integer(buffer) != 0;
+        }
+    }
+
+    public static class NotifyGameFireFriendly {
+        public final int x;
+        public final int y;
+        public final boolean hit;
+
+        public NotifyGameFireFriendly(ByteBuffer buffer) {
+            this.x = PacketReader.integer(buffer);
+            this.y = PacketReader.integer(buffer);
+            this.hit = PacketReader.integer(buffer) != 0;
+        }
+    }
+
+    public static class NotifyGameFireEnemy {
+        public final int x;
+        public final int y;
+        public final boolean hit;
+
+        public NotifyGameFireEnemy(ByteBuffer buffer) {
+            this.x = PacketReader.integer(buffer);
+            this.y = PacketReader.integer(buffer);
+            this.hit = PacketReader.integer(buffer) != 0;
+        }
+    }
+
+    public static class NotifyGameFireRejected {
+    }
+
+    public static class NotifyGameSet {
+        public final boolean won;
+
+        public NotifyGameSet(ByteBuffer buffer) {
+            this.won = PacketReader.integer(buffer) != 0;
         }
     }
 

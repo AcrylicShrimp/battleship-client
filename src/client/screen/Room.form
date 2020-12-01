@@ -30,7 +30,9 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font style="0"/>
+        </properties>
       </component>
       <grid id="2ca5e" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints>
@@ -69,7 +71,7 @@
           <component id="ecc5c" class="javax.swing.JLabel">
             <constraints border-constraint="West"/>
             <properties>
-              <text value="Msg"/>
+              <text value="Msg "/>
             </properties>
           </component>
           <component id="f64ed" class="javax.swing.JTextField" binding="msgField">
@@ -87,7 +89,9 @@
         <children>
           <component id="8b56b" class="javax.swing.JList" binding="chatList">
             <constraints/>
-            <properties/>
+            <properties>
+              <font style="0"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

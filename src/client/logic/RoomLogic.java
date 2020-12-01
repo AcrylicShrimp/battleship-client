@@ -50,8 +50,7 @@ public class RoomLogic extends Logic {
             this.room.unlock();
         });
         this.room.onClickStart(() -> {
-//            this.room.lock();
-//            this.client.send(PacketBuilder.buildRequestLeaveRoom());
+            this.client.send(PacketBuilder.buildRequestStartGame());
         });
         this.room.onClickPlayer(index -> {
             this.room.playerList().clearSelection();
@@ -111,6 +110,11 @@ public class RoomLogic extends Logic {
     @Override
     public void handle(Packet.NotifyLobby packet) {
         this.client.setLogic(new LobbyLogic(this.client, packet));
+    }
+
+    @Override
+    public void handle(Packet.NotifyGameInit packet) {
+        this.client.setLogic(new GameLogic(this.client, packet));
     }
 
     @Override

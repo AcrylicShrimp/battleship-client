@@ -63,7 +63,7 @@
             <constraints border-constraint="West"/>
             <properties>
               <labelFor value="a8494"/>
-              <text value="Msg"/>
+              <text value="Msg "/>
             </properties>
           </component>
           <component id="a8494" class="javax.swing.JTextField" binding="msgField">
